@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title> 
+    <style>
+        @media screen and (min-width:600px){
+
+            h2{
+                margin-top: 10%;
+            }
+
+
+            table{
+                
+                font-size: 300%;
+                height: 270px;
+                width: 550px;
+
+            }
+            }
+            @media screen and (max-width:600px){
+                h2{
+                margin-top: 30%;
+                }
+
+                table{
+                    
+                    font-size: 200%;
+                    height: 170px;
+                    width: 250px;
+
+                }
+        }
+    </style>
+</head>
+<body>
+    <div style=" text-align: center;">
+        <h2 >
+            Ordene los numeros de menor a mayor de izquierda a derecha</h2>
+        <table style="margin-left: auto; margin-right: auto;">
+                <tr>
+                    <td id="columna1"></td>
+                    <td id="columna2"></td>
+                    <td id="columna3"></td>
+                    <td id="columna4"></td>
+                </tr>
+                <tr>
+                    <td id="columna5"></td>
+                    <td id="columna6"></td>
+                    <td id="columna7"></td>
+                    <td id="columna8"></td>
+                </tr>
+                <tr>
+                    <td id="columna9"></td>
+                    <td id="columna10"></td>
+                    <td id="columna11"></td>
+                    <td id="columna12"></td>
+                </tr>
+            </table>
+
+    </div>
+
+    <div style=" text-align: center;">
+    <button id="botonreiniciar">
+    Reiniciar
+    </button>
+    </div>
+    <script>
+        let posicion1=false;
+        let posicion2=false;
+        let posicion3=false;
+        let posicion4=false;
+        let posicion5=false;
+        let posicion6=false;
+        let posicion7=false;
+        let posicion8=false;
+        let posicion9=false;
+        let posicion10=false;
+        let posicion11=false;
+        let posicion12=true;
+	    let numeros=[];
+        let nombresimagenes=[];
+
+
+        function organizarImagenes(){
+		            
+            for(i=0;i<100;i++){
+                let numeronuevo=Math.floor(Math.random() * 11);
+                if(numeros.indexOf(numeronuevo)==-1){
+                    numeros.push(numeronuevo);
+			
+                }
+            }
+		numeros[11]=11;
+
+            numeros.forEach(numero=>{
+                if(numero==0){
+                    nombresimagenes.push("00");
+                }
+                else
+                if(numero==1){
+                    nombresimagenes.push("01");
+                }
+                else
+                if(numero==2){
+                    nombresimagenes.push("02");
+                }
+                else
+                if(numero==3){
+                    nombresimagenes.push("03");
+                }
+                else
+                if(numero==4){
+                    nombresimagenes.push("04");
+                }
+                else
+                if(numero==5){
+                    nombresimagenes.push("05");
+                }
+                else
+                if(numero==6){
+                    nombresimagenes.push("06");
+                }
+                else
+                if(numero==7){
+                    nombresimagenes.push("07");
+                }
+                else
+                if(numero==8){
+                    nombresimagenes.push("08");
+                }
+                else
+                if(numero==9){
+                    nombresimagenes.push("09");
+                }
+                else
+                if(numero==10){
+                    nombresimagenes.push("10");
+                }
+                
+            });
+            
+        }
+	function revisarFinal(array){
+
+		let conteofinal=0;
+
+		for(i=0;i<11;i++){
+			
+			if(numeros[i]==i){
+				conteofinal++;
+				if(conteofinal==11){alert("Felicitaciones Terminaste");}
+			}
+		}
+	}
+        function moverImagen(num1,num2){
+            nombresimagenes[num2-1]=nombresimagenes[num1-1];
+            nombresimagenes[num1-1]="";
+		numeros[num2-1]=numeros[num1-1];
+		revisarFinal(numeros);
+
+        }
+        function revisarPosicion(posicion){
+            if(posicion1){
+                if(posicion==2){
+                    columna1.innerHTML=nombresimagenes[1];
+                    columna2.innerHTML="";
+                    posicion2=true;
+                    posicion1=false;
+                    moverImagen(2,1);
+                }
+                if(posicion==5){
+                    columna1.innerHTML=nombresimagenes[4];
+                    columna5.innerHTML="";
+                    posicion5=true;
+                    posicion1=false;
+                    moverImagen(5,1);
+                }
+            }
+            if(posicion2){
+                if(posicion==1){
+                    columna2.innerHTML=nombresimagenes[0];
+                    columna1.innerHTML="";
+                    posicion1=true;
+                    posicion2=false;
+                    moverImagen(1,2);
+                }
+                if(posicion==3){
+                    columna2.innerHTML=nombresimagenes[2];
+                    columna3.innerHTML="";
+                    posicion3=true;
+                    posicion2=false;
+                    moverImagen(3,2);
+                }
+                if(posicion==6){
+                    columna2.innerHTML=nombresimagenes[5];
+                    columna6.innerHTML="";
+                    posicion6=true;
+                    posicion2=false;
+                    moverImagen(6,2);
+                }
+            }
+            if(posicion3){
+                if(posicion==2){
+                    columna3.innerHTML=nombresimagenes[1];
+                    columna2.innerHTML="";
+                    posicion2=true;
+                    posicion3=false;
+                    moverImagen(2,3);
+                }
+                if(posicion==4){
+                    columna3.innerHTML=nombresimagenes[3];
+                    columna4.innerHTML="";
+                    posicion4=true;
+                    posicion3=false;
+                    moverImagen(4,3);
+                }
+                if(posicion==7){
+                    columna3.innerHTML=nombresimagenes[6];
+                    columna7.innerHTML="";
+                    posicion7=true;
+                    posicion3=false;
+                    moverImagen(7,3);
+                }
+            }
+            if(posicion4){
+                if(posicion==3){
+                    columna4.innerHTML=nombresimagenes[2];
+                    columna3.innerHTML="";
+                    posicion3=true;
+                    posicion4=false;
+                    moverImagen(3,4);
+                }
+                if(posicion==8){
+                    columna4.innerHTML=nombresimagenes[7];
+                    columna8.innerHTML="";
+                    posicion8=true;
+                    posicion4=false;
+                    moverImagen(8,4);
+                }
+            }
+            if(posicion5){
+                if(posicion==1){
+                    columna5.innerHTML=nombresimagenes[0];
+                    columna1.innerHTML="";
+                    posicion1=true;
+                    posicion5=false;
+                    moverImagen(1,5);
+                }
+                if(posicion==6){
+                    columna5.innerHTML=nombresimagenes[5];
+                    columna6.innerHTML="";
+                    posicion6=true;
+                    posicion5=false;
+                    moverImagen(6,5);
+                }
+                if(posicion==9){
+                    columna5.innerHTML=nombresimagenes[8];
+                    columna9.innerHTML="";
+                    posicion9=true;
+                    posicion5=false;
+                    moverImagen(9,5);
+                }
+            }
+            if(posicion6){
+                if(posicion==2){
+                    columna6.innerHTML=nombresimagenes[1];
+                    columna2.innerHTML="";
+                    posicion2=true;
+                    posicion6=false;
+                    moverImagen(2,6);
+                }
+                if(posicion==5){
+                    columna6.innerHTML=nombresimagenes[4];
+                    columna5.innerHTML="";
+                    posicion5=true;
+                    posicion6=false;
+                    moverImagen(5,6);
+                }
+                if(posicion==7){
+                    columna6.innerHTML=nombresimagenes[6];
+                    columna7.innerHTML="";
+                    posicion7=true;
+                    posicion6=false;
+                    moverImagen(7,6);
+                }
+                if(posicion==10){
+                    columna6.innerHTML=nombresimagenes[9];
+                    columna10.innerHTML="";
+                    posicion10=true;
+                    posicion6=false;
+                    moverImagen(10,6);
+                }
+            }
+            if(posicion7){
+                if(posicion==3){
+                    columna7.innerHTML=nombresimagenes[2];
+                    columna3.innerHTML="";
+                    posicion3=true;
+                    posicion7=false;
+                    moverImagen(3,7);
+                }
+                if(posicion==6){
+                    columna7.innerHTML=nombresimagenes[5];
+                    columna6.innerHTML="";
+                    posicion6=true;
+                    posicion7=false;
+                    moverImagen(6,7);
+                }
+                if(posicion==8){
+                    columna7.innerHTML=nombresimagenes[7];
+                    columna8.innerHTML="";
+                    posicion8=true;
+                    posicion7=false;
+                    moverImagen(8,7);
+                }
+                if(posicion==11){
+                    columna7.innerHTML=nombresimagenes[10];
+                    columna11.innerHTML="";
+                    posicion11=true;
+                    posicion7=false;
+                    moverImagen(11,7);
+                }
+            }
+            if(posicion8){
+                if(posicion==4){
+                    columna8.innerHTML=nombresimagenes[3];
+                    columna4.innerHTML="";
+                    posicion4=true;
+                    posicion8=false;
+                    moverImagen(4,8);
+                }
+                if(posicion==7){
+                    columna8.innerHTML=nombresimagenes[6];
+                    columna7.innerHTML="";
+                    posicion7=true;
+                    posicion8=false;
+                    moverImagen(7,8);
+                }
+                if(posicion==12){
+                    columna8.innerHTML=nombresimagenes[11];
+                    columna12.innerHTML="";
+                    posicion12=true;
+                    posicion8=false;
+                    moverImagen(12,8);
+                }
+            }
+            if(posicion9){
+                if(posicion==5){
+                    columna9.innerHTML=nombresimagenes[4];
+                    columna5.innerHTML="";
+                    posicion5=true;
+                    posicion9=false;
+                    moverImagen(5,9);
+                }
+                if(posicion==10){
+                    columna9.innerHTML=nombresimagenes[9];
+                    columna10.innerHTML="";
+                    posicion10=true;
+                    posicion9=false;
+                    moverImagen(10,9);
+                }
+            }
+            if(posicion10){
+                if(posicion==6){
+                    columna10.innerHTML=nombresimagenes[5];
+                    columna6.innerHTML="";
+                    posicion6=true;
+                    posicion10=false;
+                    moverImagen(6,10);
+                }
+                if(posicion==9){
+                    columna10.innerHTML=nombresimagenes[8];
+                    columna9.innerHTML="";
+                    posicion9=true;
+                    posicion10=false;
+                    moverImagen(9,10);
+                }
+                if(posicion==11){
+                    columna10.innerHTML=nombresimagenes[10];
+                    columna11.innerHTML="";
+                    posicion11=true;
+                    posicion10=false;
+                    moverImagen(11,10);
+                }
+            }
+            if(posicion11){
+                if(posicion==7){
+                    columna11.innerHTML=nombresimagenes[6];
+                    columna7.innerHTML="";
+                    posicion7=true;
+                    posicion11=false;
+                    moverImagen(7,11);
+                }
+                if(posicion==10){
+                    columna11.innerHTML=nombresimagenes[9];
+                    columna10.innerHTML="";
+                    posicion10=true;
+                    posicion11=false;
+                    moverImagen(10,11);
+                }
+                if(posicion==12){
+                    columna11.innerHTML=nombresimagenes[11];
+                    columna12.innerHTML="";
+                    posicion12=true;
+                    posicion11=false;
+                    moverImagen(12,11);
+                }
+            }
+            if(posicion12){
+                if(posicion==8){
+                    columna12.innerHTML=nombresimagenes[7];
+                    columna8.innerHTML="";
+                    posicion8=true;
+                    posicion12=false;
+                    moverImagen(8,12);
+                }
+                if(posicion==11){
+                    columna12.innerHTML=nombresimagenes[10];
+                    columna11.innerHTML="";
+                    posicion11=true;
+                    posicion12=false;
+                    moverImagen(11,12);
+                }
+            }
+        }
+        function comenzar(){
+            
+            let columna1=document.getElementById("columna1");
+            let columna2=document.getElementById("columna2");
+            let columna3=document.getElementById("columna3");
+            let columna4=document.getElementById("columna4");
+            let columna5=document.getElementById("columna5");
+            let columna6=document.getElementById("columna6");
+            let columna7=document.getElementById("columna7");
+            let columna8=document.getElementById("columna8");
+            let columna9=document.getElementById("columna9");
+            let columna10=document.getElementById("columna10");
+            let columna11=document.getElementById("columna11");
+            let columna12=document.getElementById("columna12");
+
+            let botonreiniciar=document.getElementById("botonreiniciar");
+
+            organizarImagenes();
+
+            columna1.innerHTML=nombresimagenes[0];
+            columna2.innerHTML=nombresimagenes[1];
+            columna3.innerHTML=nombresimagenes[2];
+            columna4.innerHTML=nombresimagenes[3];
+            columna5.innerHTML=nombresimagenes[4];
+            columna6.innerHTML=nombresimagenes[5];
+            columna7.innerHTML=nombresimagenes[6];
+            columna8.innerHTML=nombresimagenes[7];
+            columna9.innerHTML=nombresimagenes[8];
+            columna10.innerHTML=nombresimagenes[9];
+            columna11.innerHTML=nombresimagenes[10];
+            nombresimagenes.push("");
+		    numeros[11]=11;
+            
+            columna1.addEventListener("click",function(){
+                revisarPosicion(1);
+            },null);
+            columna2.addEventListener("click",function(){
+                revisarPosicion(2);
+            },null);
+            columna3.addEventListener("click",function(){
+                revisarPosicion(3);
+            },null);
+            columna4.addEventListener("click",function(){
+                revisarPosicion(4);
+            },null);
+            columna5.addEventListener("click",function(){
+                revisarPosicion(5);
+            },null);
+            columna6.addEventListener("click",function(){
+                revisarPosicion(6);
+            },null);
+            columna7.addEventListener("click",function(){
+                revisarPosicion(7);
+            },null);
+            columna8.addEventListener("click",function(){
+                revisarPosicion(8);
+            },null);
+            columna9.addEventListener("click",function(){
+                revisarPosicion(9);
+            },null);
+            columna10.addEventListener("click",function(){
+                revisarPosicion(10);
+            },null);
+            columna11.addEventListener("click",function(){
+                revisarPosicion(11);
+            },null);
+            columna12.addEventListener("click",function(){
+                revisarPosicion(12);
+            },null); 
+            botonreiniciar.addEventListener("click",function(){
+                location.reload();
+            },null)           
+        }
+        window.addEventListener("load",comenzar(),null);
+    </script>
+</body>
+</html>
+
